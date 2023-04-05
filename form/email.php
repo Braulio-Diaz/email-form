@@ -1,5 +1,6 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require 'phpmailer/PHPMailer/src/Exception.php';
@@ -33,7 +34,7 @@ function sendEmail(){
 
     //Recipients
     $mail->setFrom('pruebas@promarketing.cl', 'Mailer');
-    $mail->addAddress('pruebas@promarketing.cl', 'Joe User');     //Add a recipient
+    $mail->addAddress('braulio_diaz@outlook.com', 'Joe User');     //Add a recipient
     //$mail->addAddress('ellen@example.com');               //Name is optional
     //$mail->addReplyTo('info@example.com', 'Information');
     //$mail->addCC('cc@example.com');

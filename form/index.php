@@ -9,7 +9,7 @@
   </head>
   <body>
     
-  <form method="email.php" action="POST">
+  <form method="post" action="email.php">
     <h2> Formulario de contacto </h2>
     <p> Nombre: <br>
     <input type="text" name="name" required></p>
