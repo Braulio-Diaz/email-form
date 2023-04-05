@@ -13,11 +13,15 @@ echo "que recibe la info pls";
 sendEmail();
 
 function sendEmail(){
-    if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['comment'])){
+    if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['comment']) && isset($_POST['number'])
+       && isset($_POST['issue']) && isset($_POST['select'])){
 
         $name = $_POST['name'];
         $email = $_POST['email'];
         $comment = $_POST['comment'];
+        $number = $_POST['number'];
+        $issue = $_POST['issue'];
+        $select = $_POST['select'];
 
         $mail = new PHPMailer(true);
 
@@ -34,7 +38,7 @@ function sendEmail(){
 
     //Recipients
     $mail->setFrom('pruebas@promarketing.cl', 'Mailer');
-    $mail->addAddress('braulio_diaz@outlook.com', 'Joe User');     //Add a recipient
+    $mail->addAddress($email, 'Joe User');     //Add a recipient
     //$mail->addAddress('ellen@example.com');               //Name is optional
     //$mail->addReplyTo('info@example.com', 'Information');
     //$mail->addCC('cc@example.com');
@@ -47,7 +51,8 @@ function sendEmail(){
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Correo de contacto';
-    $mail->Body    = 'Nombre: '. $name . '<br>Correo: '. $email . '<br>Comentarios: '. $comment;
+    $mail->Body    = 'Nombre: '. $name . '<br>Correo: '. $email . '<br>Número de teléfono: '. $number . 
+                     '<br> Opción seleccionada: '. $select . '<br>Asunto: '. $issue . '<br>Comentarios: '. $comment;
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
