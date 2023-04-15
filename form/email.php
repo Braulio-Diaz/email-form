@@ -13,21 +13,22 @@ echo "que recibe la info pls";
 sendEmail();
 
 function sendEmail(){
-    if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['comment']) && isset($_POST['number'])
-       && isset($_POST['issue']) && isset($_POST['select'])){
+    if(isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['numero']) && isset($_POST['servicio'])
+       && isset($_POST['asunto']) && isset($_POST['comentario'])){
 
-        $name = $_POST['name'];
+        $nombre = $_POST['nombre'];
         $email = $_POST['email'];
-        $comment = $_POST['comment'];
-        $number = $_POST['number'];
-        $issue = $_POST['issue'];
-        $select = $_POST['select'];
+        $numero = $_POST['numero'];
+        $servicio = $_POST['servicio'];
+        $asunto = $_POST['asunto'];
+        $comentario = $_POST['comentario'];
 
         $mail = new PHPMailer(true);
 
     try {
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER; 
+    $mail->CharSet = 'utf-8';                     //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'mail.promarketing.cl';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -51,8 +52,8 @@ function sendEmail(){
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Correo de contacto';
-    $mail->Body    = 'Nombre: '. $name . '<br>Correo: '. $email . '<br>Número de teléfono: '. $number . 
-                     '<br> Opción seleccionada: '. $select . '<br>Asunto: '. $issue . '<br>Comentarios: '. $comment;
+    $mail->Body    = 'Nombre: '. $nombre . '<br>Correo: '. $email . '<br>Número de teléfono: '. $numero . 
+                     '<br> Servicio seleccionado: '. $servicio . '<br>Asunto: '. $asunto . '<br>Comentarios: '. $comentario;
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
