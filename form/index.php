@@ -11,10 +11,14 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <script src="test.js" type="text/javascript"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximun-scale=1, minimun-scale=1">
     <title>Form</title>
@@ -49,41 +53,34 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
             <input type="number" name="numero" id="numero" class="form-control" required>
           </div>
         <br>
-          <div class="col-md-5">
-            <i class='bx bxs-plus-circle bx-sm btn btn-primary' id="agregar" onclick="servicio();"></i>
-          </div>
-          <br>
-          <div class="col-md-5">
-            <div class="form-row clonar py-1" >
-              <select class="form-select" id="servicio" name="servicio[]" required>
-                <option value="">Seleccionar servicio</option>
-                <option value="Cotizar isapre">Cotizar isapre</option>
-                <option value="Cotizar seguros de salud">Cotizar seguros de salud</option>
-                <option value="Cotizar seguros de vida">Cotizar seguros de vida</option>
-                <option value="Cotizar seguros generales">Cotizar seguros generales</option>
-                <option value="Cotizar seguros complementarios">Cotizar seguros complementarios</option>
-                <option value="Cotizar seguros con ahorro y APV">Cotizar seguros con ahorro y APV</option>
-              </select>
-              <i class="bx bx-trash bx-xs btn btn-danger puntero ocultar"></i>
+            <div class="row">
+                <div class="col-md-5">
+                    <i class='bx bxs-plus-circle bx-xs btn btn-primary' id="agregar" onclick="clonar1()"></i>
+                </div>
             </div>
-            <div id="contenedor"></div>
+        <br>
+          <div class="row">
+            <div class="col-md-5">
+              <div class="form-row py-1 clonar" >
+                <div class="form-group col-md-12 seleccionar1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16"> <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/> </svg>
+                  <select class="form-select" name="select[]" required>
+                    <option value="">Seleccionar servicio </option>
+                    <option value="Cotizar isapre">Cotizar isapre</option>
+                    <option value="Cotizar seguros de salud">Cotizar seguros de salud</option>
+                    <option value="Cotizar seguros de vida">Cotizar seguros de vida</option>
+                    <option value="Cotizar seguros generales">Cotizar seguros generales</option>
+                    <option value="Cotizar seguros complementarios">Cotizar seguros complementarios</option>
+                    <option value="Cotizar seguros con ahorro y APV">Cotizar seguros con ahorro y APV</option>
+                  </select>
+                  
+                   <div class="ocultar">
+                      <i class="bx bx-trash bx-xs btn btn-danger " onclick="borrar(0)"></i>
+                   </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <script>
-    let agregar = document.getElementById('agregar');
-    let contenido = document.getElementById('contenedor');
-
-    agregar.addEventListener('click', e =>{
-        e.preventDefault();
-
-        let clonado = document.querySelector('.clonar');
-        let clon = clonado.cloneNode(true);
-
-        contenido.appendChild(clon).classList.remove('.clonar')
-
-        let remover = contenido.lastChild.childNodes[1].querySelectorAll('i');
-        remover[0].classList.remove('ocultar');
-    });
-          </script>
         <br>
           <div class="col-md-5">
             <label for="issue" class="form-label">Asunto</label>

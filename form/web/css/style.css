@@ -1,0 +1,11 @@
+#hidde{
+    display: none;
+  }
+
+.puntero{
+    cursor: pointer;
+}
+
+.ocultar{
+    display:none;
+}
