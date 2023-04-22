@@ -63,9 +63,8 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-md-5">
               <div class="form-row py-1 clonar" >
                 <div class="form-group col-md-12 seleccionar1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16"> <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/> </svg>
                   <select class="form-select" name="select[]" required>
-                    <option value="">Seleccionar servicio </option>
+                    <option value="">Seleccionar servicio</option>
                     <option value="Cotizar isapre">Cotizar isapre</option>
                     <option value="Cotizar seguros de salud">Cotizar seguros de salud</option>
                     <option value="Cotizar seguros de vida">Cotizar seguros de vida</option>
@@ -73,7 +72,6 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
                     <option value="Cotizar seguros complementarios">Cotizar seguros complementarios</option>
                     <option value="Cotizar seguros con ahorro y APV">Cotizar seguros con ahorro y APV</option>
                   </select>
-                  
                    <div class="ocultar">
                       <i class="bx bx-trash bx-xs btn btn-danger " onclick="borrar(0)"></i>
                    </div>
